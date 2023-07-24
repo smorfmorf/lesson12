@@ -1,23 +1,29 @@
 function playGame() {
-    const secretNumber = Math.floor(Math.random() * 100) + 1;
-    let guess = +prompt("Угадай число от 1 до 100:");
+    let secretNumber;
+    let playing = true;
 
-    if (guess === null) {
-        console.log("Игра окончена.");
-        return;
-    }
+    while (playing) {
+        secretNumber = Math.floor(Math.random() * 5);
+        let userInput = prompt(
+            "Угадай число от 1 до 5 или нажми 'Отмена', чтобы выйти:"
+        );
 
-    if (isNaN(guess)) {
-        console.log("Введи число!");
-        playGame(); // Рекурсивный вызов для перезапуска игры
-    } else if (guess > secretNumber) {
-        console.log("Меньше!");
-        playGame(); // Рекурсивный вызов для продолжения игры
-    } else if (guess < secretNumber) {
-        console.log("Больше!");
-        playGame(); // Рекурсивный вызов для продолжения игры
-    } else {
-        console.log("Правильно!");
+        if (userInput === null) {
+            alert("Игра окончена.");
+            playing = false; // Выход из цикла
+        } else {
+            let guess = +userInput;
+            if (isNaN(guess)) {
+                alert("Введи число!");
+            } else if (guess > secretNumber) {
+                alert("Меньше!");
+            } else if (guess < secretNumber) {
+                alert("Больше!");
+            } else {
+                alert("Правильно!");
+                playing = false; // Выход из цикла
+            }
+        }
     }
 }
 
