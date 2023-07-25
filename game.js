@@ -2,7 +2,9 @@ function playGame() {
     let secretNumber;
     let playing = true;
 
-    secretNumber = Math.floor(Math.random() * 5);
+    secretNumber = Math.floor(Math.random() * 4) + 1;
+    console.log("secretNumber", secretNumber);
+
     let userInput = prompt(
         "Угадай число от 1 до 5 или нажми 'Отмена', чтобы выйти:"
     );
